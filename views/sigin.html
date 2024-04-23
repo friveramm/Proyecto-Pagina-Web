@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria - Sig In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/sigin.css">
+</head>
+<body>
+    <header>
+        <div id="banner-placeholder"></div>
+        <div id="navbar-placeholder"></div>
+    </header>
+    <body>
+        <div id="cont-formulario">
+            <h1>Formulario de registro</h1>
+            <form action="" id="formulario">
+                <div class="form-group" id="grupo__nombre">
+                    <label for="nombre" class="formulario__label">Nombre:</label>
+                    <input type="text" class="form-control formulario__input" name="nombre" id="nombre" placeholder="Ingrese su nombre">
+                </div>
+                <div class="form-group" id="grupo__rut">
+                    <label for="rut" class="formulario__label">RUT:</label>
+                    <input type="text" class="form-control formulario__input" id="rut" placeholder="Ingrese su RUT">
+                </div>
+                <div class="form-group" id="grupo__correo">
+                    <label for="correo" class="formulario__label">Correo:</label>
+                    <input type="text" class="form-control formulario__input" id="correo" placeholder="Ingrese su correo">
+                </div>
+                <div id="cont-botones">
+                    <button type="button" class="btn btn-primary">Registrarse</button>
+                    <button type="reset" class="btn btn-primary">Limpiar campos</button>    
+                </div>
+            </form>
+        </div>        
+    </body>
+    <footer>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim.js/4.0.3/Slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/validacionFormulario.js"></script>
+    <script src="../js/banner.js"></script>
+    <script src="../js/navbar.js"></script>
+</body>
+</html>
