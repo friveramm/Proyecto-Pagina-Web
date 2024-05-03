@@ -18,16 +18,65 @@
             <h1>Formulario de registro</h1>
             <form action="" id="formulario">
                 <div class="form-group" id="grupo__nombre">
-                    <label for="nombre" class="formulario__label">Nombre:</label>
+                    <label for="nombre" class="formulario__label">Nombre completo:</label>
                     <input type="text" class="form-control formulario__input" name="nombre" id="nombre" placeholder="Ingrese su nombre">
+                    <div id="errorNombre">
+
+                    </div>
                 </div>
                 <div class="form-group" id="grupo__rut">
                     <label for="rut" class="formulario__label">RUT:</label>
                     <input type="text" class="form-control formulario__input" id="rut" placeholder="Ingrese su RUT">
+                    <div id="errorRut">
+
+                    </div>
+                </div>
+                <div class="form-group" id="grupo__region">
+                    <label for="region" class="formulario__label">Región:</label>
+                    <select class="form-select regiones" aria-label="Default select example">
+                        <option selected>Seleccione su región</option>
+                    </select>
+                </div>
+                <div class="form-group" id="grupo__comuna">
+                    <label for="comuna" class="formulario__label">Comuna:</label>
+                    <select class="form-select comunas" aria-label="Default select example" disabled>
+                        <option selected>Seleccione su comuna</option>
+                    </select>
+                </div>
+                <div class="form-group" id="grupo__direccion">
+                    <label for="direccion" class="formulario__label">Dirección:</label>
+                    <input type="text" class="form-control formulario__input" id="direccion" placeholder="Ingrese su dirección">
+                    <div id="errorDireccion">
+
+                    </div>
+                </div>
+                <div class="form-group" id="grupo__numero">
+                    <label for="numero" class="formulario__label">Número de Celular:</label>
+                    <input type="text" class="form-control formulario__input" id="numero" placeholder="Ingrese su número de celular">
+                    <div id="errorNumero">
+
+                    </div>
                 </div>
                 <div class="form-group" id="grupo__correo">
                     <label for="correo" class="formulario__label">Correo:</label>
                     <input type="text" class="form-control formulario__input" id="correo" placeholder="Ingrese su correo">
+                    <div id="errorCorreo">
+
+                    </div>
+                </div>
+                <div class="form-group" id="grupo__contraseña">
+                    <label for="contraseña" class="formulario__label">Contraseña:</label>
+                    <input type="password" class="form-control formulario__input" id="contraseña" placeholder="Ingrese su contraseña">
+                    <div id="errorContraseña">
+
+                    </div>
+                </div>
+                <div class="form-group" id="grupo__verifContraseña">
+                    <label for="verifContraseña" class="formulario__label">Reingrese la contraseña:</label>
+                    <input type="password" class="form-control formulario__input" id="verifContraseña" placeholder="Ingrese nuevamente la contraseña">
+                    <div id="errorVerifContra">
+
+                    </div>
                 </div>
                 <div id="cont-botones">
                     <button type="button" class="btn btn-primary">Registrarse</button>
@@ -37,15 +86,18 @@
         </div>        
     </body>
     <footer>
-
+        <div id="footer-placeholder"></div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slim.js/4.0.3/Slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../node_modules/validar-rut/index.js"></script>
     <script src="../js/validacionFormulario.js"></script>
     <script src="../js/banner.js"></script>
     <script src="../js/navbar.js"></script>
+    <script src="../js/footer.js"></script>
+    <script src="../js/cargarRegionesComunas.js"></script>
 </body>
 </html>

@@ -1,72 +1,142 @@
-$("#nombre").on("keyup blur", function(){
-    var nombre = $("#nombre").val();
-    if (nombre.length > 0) {
-        if (String(nombre).length > 4){
-            $("#nombre").css("border","1.5px solid green");
+$(document).ready(function() {
+    $("#nombre").on("keyup blur", function(){
+        var nombre = $("#nombre").val();
+        if (nombre.length > 0) {
+            if (String(nombre).length > 4){
+                $("#nombre").css("border","2px solid rgb(0, 204, 102)");
+                $("#errorNombre").empty();
+            }else{
+                $("#nombre").css("border","2px solid red");
+                $("#errorNombre").html("<span class='error-message'>* El nombre debe tener al menos 4 carácteres</span><br>");
+            };        
         }else{
-            $("#nombre").css("border","1.5px solid red");
-        };        
-    }else{
-        $('#rut').css("border", "")
-    };
-});
-
-$("#rut").on("keyup blur", function() {
-    var rut = $("#rut").val().trim(); // Se elimina cualquier espacio en blanco al inicio o al final
-
-    if (rut.length > 0) {
-        if (rut.length >= 8 && rut.length <= 9){
-            if (/^[1-9][0-9]{0,7}[0-9kK]$/.test(rut)) {
-                // El formato del RUT es válido
-                $("#rut").css("border", "1.5px solid green");
-            } else {
-                // El formato del RUT no es válido
-                $("#rut").css("border", "1.5px solid red");
-            }
-        }else{
-            $("#rut").css("border", "1.5px solid red");
-        }
-    } else {
-        // El campo está vacío
-        $("#rut").css("border", "");
-    }
-});
-
-$("#correo").on("keyup blur", function() {
-    var correo = $("#correo").val();
-    if (correo.length > 0) {
-        if (correo.length > 4) {
-            if (/^[\w._]+@(gmail|live|outlook)\.(com|cl)$/.test(correo)) {
-                $("#correo").css("border", "1.5px solid green");
-            } else {
-                console.log('error en correo?')
-                $("#correo").css("border", "1.5px solid red");
+            $('#nombre').css("border", "")
+            $("#errorNombre").empty();
+        };
+    });
+    
+    $("#rut").on("blur keyup", function() {
+        var rut = clearRUT($("#rut").val()); // Se elimina cualquier espacio en blanco al inicio o al final
+    
+        if (rut.length > 0) {
+            if (validateRUT(rut)){
+                console.log(validateRUT(rut));
+                $("#rut").css("border","2px solid rgb(0, 204, 102)");
+                $("#errorRut").empty();
+            }else{
+                console.log("no funciona!");
+                $("#rut").css("border", "2px solid red");
+                $("#errorRut").html("<span class='error-message'>* El RUT no es válido</span><br>");
             }
         } else {
-            $("#correo").css("border", "1.5px solid red");
+            // El campo está vacío
+            $("#rut").css("border", "");
+            $("#errorRut").empty();
         }
-    } else {
-        $("#correo").css("border", ""); // Restablecer el estilo de borde si el campo está vacío
+    });
+    
+    $("#direccion").on("keyup blur", function(){
+        var direccion = $("#direccion").val();
+        if (direccion.length > 0) {
+            if (direccion.length >= 5 && direccion.length <= 40) {
+                $("#direccion").css("border", "2px solid rgb(0, 204, 102)");
+                $("#errorDireccion").empty();
+            } else {
+                $("#direccion").css("border", "2px solid red");
+                $("#errorDireccion").html("<span class='error-message'>* Dirección debe tener entre 5 y 40 carácteres</span><br>");
+            }        
+        } else {
+            $('#direccion').css("border", "");
+            $("#errorDireccion").empty();
+        }
+    });
+    
+    $("#numero").on("click", function(){
+        if ($("#numero").val() === "") {
+            $("#numero").val('+569');
+        }
+    });
+    
+    $("#numero").on("blur keyup", function(){
+        var numero = $("#numero").val();
+        if (numero.length > 0) {
+            if (formatearCelular(numero).length == 11) {
+                $("#numero").css("border", "2px solid rgb(0, 204, 102)");
+                $("#errorNumero").empty();
+            } else {
+                $("#numero").css("border", "2px solid red");
+                $("#errorNumero").html("<span class='error-message'>* Número de celular debe tener 11 dígitos</span><br>");
+            }
+        } else {
+            $('#numero').css("border", "");
+            $("#errorNumero").empty();
+        }
+    });
+    
+    function formatearCelular(numero) {
+        var numFormateado = numero.replace(/[^0-9]/g, "");
+        return numFormateado;
     }
+    
+    $("#correo").on("keyup blur", function() {
+        var correo = $("#correo").val();
+        if (correo.length > 0) {
+            if (correo.length > 4) {
+                if (/^[\w._]+@(gmail|live|outlook)\.(com|cl)$/.test(correo)) {
+                    $("#correo").css("border", "1.5px solid green");
+                    $("#errorCorreo").empty();
+                } else {
+                    console.log('error en correo?')
+                    $("#correo").css("border", "1.5px solid red");
+                    $("#errorCorreo").html("<span class='error-message'>* Solamente se admiten correos del dominio gmail, live y outlook</span><br>");
+                }
+            } else {
+                $("#correo").css("border", "1.5px solid red");
+                $("#errorCorreo").html("<span class='error-message'>* Correo al menos debe tener 4 carácteres</span><br>");
+            }
+        } else {
+            $("#correo").css("border", ""); // Restablecer el estilo de borde si el campo está vacío
+            $("#errorCorreo").empty();
+        }
+    });
+    
+    $("#contraseña").on("keyup blur", function(){
+        var contraseña = $("#contraseña").val();
+        if (contraseña.length > 0) {
+            if (contraseña.length >= 5 && contraseña.length <= 8) {
+                $("#contraseña").css("border", "2px solid rgb(0, 204, 102)");
+                $("#errorContraseña").empty();
+            } else {
+                $("#contraseña").css("border", "2px solid red");
+                $("#errorContraseña").html("<span class='error-message'>* Contraseña debe tener entre 5 y 8 dígitos</span><br>");
+            }        
+        } else {
+            $('#contraseña').css("border", "");
+            $("#errorContraseña").empty();
+        }
+    });
+    
+    $("#verifContraseña").on("keyup blur input", function(){
+        if ($("#verifContraseña").val().length > 0) {
+            if ($("#verifContraseña").val() === $("#contraseña").val()) {
+                $("#verifContraseña").css("border", "2px solid rgb(0, 204, 102)");
+                $("#errorVerifContra").empty();
+            } else {
+                $("#verifContraseña").css("border", "2px solid red");
+                $("#errorVerifContra").html("<span class='error-message'>* Campo debe ser igual que la contraseña ingresada anteriormente</span><br>");
+            }
+        } else {
+            if ($('#contraseña').val().length > 0) {
+                $("#verifContraseña").css("border", "2px solid red");
+                $("#errorVerifContra").html("<span class='error-message'>* Campo debe ser igual que la contraseña ingresada anteriormente</span><br>");
+            } else {
+                $('#verifContraseña').css("border", "");
+                $("#errorVerifContra").empty();
+            }
+        }
+    });
+    
+    $("#contraseña").on("keyup blur input", function(){
+        $("#verifContraseña").trigger("input");
+    });
 });
-
-$("#rut").blur(function(){
-    var rut = String($("#rut").val());
-    if (rut.length >= 8 && rut.length <= 9){
-        var formattedRut = formatRut(rut);
-        $("#rut").val(formattedRut);
-    }
-});
-
-function formatRut(rut) {
-    rut = rut.replace(/[^\dkK]+/g, ""); // Remover todos los caracteres no numéricos excepto "k" o "K"
-    var formatted = "";
-    var digit = rut.slice(-1); // Obtener el último dígito
-    rut = rut.slice(0, -1); // Remover el último dígito
-    while (rut.length > 3) {
-        formatted = "." + rut.slice(-3) + formatted; // Agregar puntos cada 3 dígitos desde la derecha
-        rut = rut.slice(0, -3); // Remover los últimos 3 dígitos
-    }
-    formatted = rut + formatted + "-" + digit; // Agregar guión y último dígito
-    return formatted;
-}
