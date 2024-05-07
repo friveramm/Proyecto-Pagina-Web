@@ -12,10 +12,10 @@ $(document).ready(function(){
         // Obtener el valor seleccionado de la región
         var regionSeleccionada = $(".regiones").val();
         $(".comunas").empty();
-        $(".comunas").append("<option selected>Seleccione su comuna</option>");
+        $(".comunas").append("<option value='0'>Seleccione su comuna</option>");
 
         // Verificar si se ha seleccionado una región
-        if (regionSeleccionada === "" || regionSeleccionada === "Seleccione su región") {
+        if (regionSeleccionada == 0) {
             // Si no se ha seleccionado una región, deshabilitar el select de comunas
             $(".comunas").prop("disabled", true);
         } else {

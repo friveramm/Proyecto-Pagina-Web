@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var flag = true;
+
     $("#nombre").on("keyup blur", function(){
         var nombre = $("#nombre").val();
         if (nombre.length > 0) {
@@ -20,11 +22,9 @@ $(document).ready(function() {
     
         if (rut.length > 0) {
             if (validateRUT(rut)){
-                console.log(validateRUT(rut));
                 $("#rut").css("border","2px solid rgb(0, 204, 102)");
                 $("#errorRut").empty();
             }else{
-                console.log("no funciona!");
                 $("#rut").css("border", "2px solid red");
                 $("#errorRut").html("<span class='error-message'>* El RUT no es válido</span><br>");
             }
@@ -32,6 +32,41 @@ $(document).ready(function() {
             // El campo está vacío
             $("#rut").css("border", "");
             $("#errorRut").empty();
+        }
+    });
+
+    $("#regiones").on("change blur", function() {
+        var opcionSelec = $("#regiones").val();
+
+        if (opcionSelec == 0) {
+            $("#regiones").css("border", "2px solid red");
+            $("#errorRegion").html("<span class='error-message'>* Debe seleccionar una región válida</span><br>");
+            $("#comunas").css("border", "");
+            $("#errorComuna").empty();
+        } else {
+            $("#regiones").css("border", "");
+            $("#errorRegion").empty();
+            $("#regiones").css("border","2px solid rgb(0, 204, 102)");
+            $("#errorRegion").empty();
+        }
+    });
+
+    $("#comunas").on("change blur", function() {
+        var opcionSelec = $("#comunas").val();
+
+        if (opcionSelec == 0 && $("#regiones").val() != 0) {
+            $("#comunas").css("border", "2px solid red");
+            $("#errorComuna").html("<span class='error-message'>* Debe seleccionar una comuna válida</span><br>");
+        } else {
+            $("#comunas").css("border", "");
+            $("#errorComuna").empty();
+            $("#comunas").css("border","2px solid rgb(0, 204, 102)");
+            $("#errorComuna").empty();
+        }
+
+        if ($("#regiones").val() == 0) {
+            $("#comunas").css("border", "");
+            $("#errorComuna").empty();
         }
     });
     
@@ -138,5 +173,26 @@ $(document).ready(function() {
     
     $("#contraseña").on("keyup blur input", function(){
         $("#verifContraseña").trigger("input");
+    });
+
+    $("#btn-limpiar").click(function(event) {
+        // Limpiar campos del formulario
+        $("#nombre").css("border", "");
+        $("#rut").css("border", "");
+        $("#regiones").css("border", "");
+        $("#comunas").css("border", "");
+        $("#direccion").css("border", "");
+        $("#numero").css("border", "");
+        $("#correo").css("border", "");
+        $("#contraseña").css("border", "");
+        $("#verifContraseña").css("border", "");
+        $("[id^='error']").empty();
+        $(".comunas").prop("disabled", true);
+    });
+
+    $(".btn-registro").click(function(event) {
+        event.preventDefault();
+        //Validación
+        $("#formulario").submit();
     });
 });
