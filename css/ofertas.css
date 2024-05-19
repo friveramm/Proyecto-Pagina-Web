@@ -1,12 +1,28 @@
 .contProductos{
-    padding-top: 50px;
+    padding-top: 80px;
     justify-content: center;
+    /* width: 80%; */
+
 }
 
 .row{
     justify-content: center;
 }
 
-.contProductos{
-    width: 80%;
+.cont-agregar-carrito {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.quantity {
+    width: 60px;
+    text-align: center;
+    margin-right: 10px;
+    padding: 0;
+    font-size: 1.25rem; /* Tamaño del texto ajustado */
+    height: 38px; /* Altura ajustada para alinearse con el botón */
+}
+.btn-primary {
+    height: 38px; /* Altura ajustada para alinearse con el input */
+    border-radius: 110%;
 }
