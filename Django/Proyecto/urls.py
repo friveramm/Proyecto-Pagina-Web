@@ -9,4 +9,7 @@ from Proyecto import views
 
 urlpatterns = [
      path("", views.index, name="index"),
+     path("ofertas", views.ofertas, name="ofertas"),
+     path("sigin", views.sigin, name="sigin"),
+     path("login", views.login, name="login"),
 ]

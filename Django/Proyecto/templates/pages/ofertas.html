@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ofertas.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <div id="banner-placeholder">
+            {% include 'base/banner.html' %}
+        </div>
+        <div id="navbar-placeholder">
+            {% include 'base/navbar.html' %}
+        </div>
+    </header>
+
+    <div class="contProductos container-fluid">
+        <div class="row row-cols-1 row-cols-md-4 g-4 text-center mx-auto" id="catalogo">
+            <div class="col mx-auto">
+                <div class="card h-100 w-75 mx-auto">
+                    <img src="{% static 'img/prod.webp' %}" class="card-img-top img-fluid " alt="Cargando imagen...">
+                    <div class="card-body">
+                        <p class="card-text">Nombre del Producto</p>
+                        <p>$1.990</p>
+                        <div class="cont-agregar-carrito">
+                            <input type="number" id="quantity" name="quantity" min="1" max="100" value="1">
+                            <button class="btn btn-primary" id="add-to-cart-1">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 w-75 mx-auto">
+                    <img src="{% static 'img/prod.webp' %}" class="card-img-top img-fluid " alt="Cargando imagen...">
+                    <div class="card-body">
+                        <p class="card-text">Nombre del Producto</p>
+                        <p>$1.990</p>
+                        <div class="cont-agregar-carrito">
+                            <input type="number" id="quantity" name="quantity" min="1" max="100" value="1">
+                            <button class="btn btn-primary" id="add-to-cart-1">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 w-75 mx-auto">
+                    <img src="{% static 'img/prod.webp' %}" class="card-img-top img-fluid " alt="Cargando imagen...">
+                    <div class="card-body">
+                        <p class="card-text">Nombre del Producto</p>
+                        <p>$1.990</p>
+                        <div class="cont-agregar-carrito">
+                            <input type="number" id="quantity" name="quantity" min="1" max="100" value="1">
+                            <button class="btn btn-primary" id="add-to-cart-1">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 w-75 mx-auto">
+                    <img src="{% static 'img/prod.webp' %}" class="card-img-top img-fluid " alt="Cargando imagen...">
+                    <div class="card-body">
+                        <p class="card-text">Nombre del Producto</p>
+                        <p>$1.990</p>
+                        <div class="cont-agregar-carrito">
+                            <input type="number" id="quantity" name="quantity" min="1" max="100" value="1">
+                            <button class="btn btn-primary" id="add-to-cart-1">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div id="footer-placeholder">
+            {% include 'base/footer.html' %}
+        </div>
+    </footer>
+
+    <script src="{% static 'js/cargarProductos.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim.js/4.0.3/Slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</body>
+</html>

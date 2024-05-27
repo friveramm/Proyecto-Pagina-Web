@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria - Log In</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <header>
+        <div id="banner-placeholder">
+            {% include 'base/banner.html' %}
+        </div>
+        <div id="navbar-placeholder">
+            {% include 'base/navbar.html' %}
+        </div>
+    </header>
+    <body>
+        <div id="cont-formulario">
+            <h1>Inicio de Sesión</h1>
+            <form action="" id="formulario">
+                <div class="form-group" id="grupo__correo">
+                    <label for="correo" class="formulario__label">Correo:</label>
+                    <input type="text" class="form-control formulario__input" id="correo" placeholder="Ingrese su correo">
+                    <div id="errorCorreo">
+
+                    </div>
+                </div>
+                <div class="form-group" id="grupo__contraseña">
+                    <label for="contraseña" class="formulario__label">Contraseña:</label>
+                    <input type="password" class="form-control formulario__input" id="contraseña" placeholder="Ingrese su contraseña">
+                    <div id="errorContraseña">
+
+                    </div>
+                </div>
+                <div id="cont-botones">
+                    <button type="submit" class="btn btn-primary btn-registro">Registrarse</button>
+                    <button type="reset" class="btn btn-primary" id="btn-limpiar">Limpiar campos</button>    
+                </div>
+            </form>
+        </div>        
+    </body>
+    <footer>
+        <div id="footer-placeholder">
+            {% include 'base/footer.html' %}
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim.js/4.0.3/Slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../node_modules/validar-rut/index.js"></script>
+    <script src="{% static 'js/validacionFormulario.js' %}"></script>
+    <script src="{% static 'js/cargarRegionesComunas.js' %}../"></script>
+</body>
+</html>
