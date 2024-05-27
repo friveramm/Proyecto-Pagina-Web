@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $.get("{% static json/regionesComunas.json %}", function(data) {
+    $.get("/static/json/regionesComunas.json" , function(data) {
         $.each(data.regions, function (i, item) {
             $(".regiones").append(
                 "<option value=" + item.number + ">" + item.name + "</option>"
@@ -22,7 +22,7 @@ $(document).ready(function(){
             // Si se ha seleccionado una región, habilitar el select de comunas y cargar las comunas correspondientes a la región
             $(".comunas").prop("disabled", false);
             
-            $.get("{% static json/regionesComunas.json %}", function(data) {
+            $.get("/static/json/regionesComunas.json", function(data) {
                 // Filtrar las comunas de la región seleccionada
                 var comunas = data.regions.find(function(region) {
                     return region.number === regionSeleccionada;
