@@ -18,10 +18,10 @@ $(document).ready(function() {
     });
     
     $("#rut").on("blur keyup", function() {
-        var rut = clearRUT($("#rut").val()); // Se elimina cualquier espacio en blanco al inicio o al final
+        var rut = ($("#rut").val()); // Se elimina cualquier espacio en blanco al inicio o al final
     
         if (rut.length > 0) {
-            if (validateRUT(rut)){
+            if (Valida_Rut(rut)){
                 $("#rut").css("border","2px solid rgb(0, 204, 102)");
                 $("#errorRut").empty();
             }else{
@@ -195,4 +195,52 @@ $(document).ready(function() {
         //Validación
         $("#formulario").submit();
     });
+
+    function Valida_Rut(rut) {
+        var tmpstr = "";
+        for (i = 0; i < rut.length; i++) {
+            if (rut.charAt(i) != ' ' && rut.charAt(i) != '.') {
+                tmpstr = tmpstr + rut.charAt(i);
+                rut = tmpstr;
+            }
+        }
+        if (rut.indexOf('-') != -1) {
+            var digito = rut.substring(rut.indexOf('-') + 1, rut.length);
+            rut = rut.substring(0, rut.indexOf('-'));
+        } else {
+            return false;
+        }
+        var suma = 0;
+        var res;
+        var dvr = '0';
+        var dvi, dv;
+        var largo = rut.length;
+        if (largo > 8 || largo < 7) {
+            return false;
+        } else {
+            var mu1 = 2;
+            for (var i = rut.length - 1; i >= 0; i--) {
+                suma = suma + rut.charAt(i) * mu1;
+                if (mu1 == 7) {
+                    mu1 = 2;
+                } else {
+                    mu1++;
+                }
+            }
+            res = suma % 11;
+            if (res == 1) {
+                dvr = 'K';
+            } else if (res == 0) {
+                dvr = '0';
+            } else {
+                dvi = 11 - res;
+                dvr = dvi + "";
+            }
+            if (dvr != digito.toUpperCase()) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
 });
